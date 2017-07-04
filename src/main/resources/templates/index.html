@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html id="child-html" lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title></title>
+    <div th:include="util/common_css"></div>
+</head>
+<body>
+<div th:include="util/top"></div>
+<div th:include="util/header"></div>
+<div class="content" th:if="${showData!=null and showData.size()!=0}">
+
+    <table style="width: 100%;" cellpadding="10px" cellspacing="0px">
+        <tr th:each="list:${showData}">
+            <td width="5%"></td>
+            <td  width="30%">
+                <div th:if="${list.size()>=1}" th:onclick="'javascript:showDetial('+${list.get(0).id}+');'" class="goodshow">
+                    <img th:src="@{/common/showPic(filePath=${list.get(0).imageUrl_1})}"/>
+                    <div class="good_title">
+                        <p th:text="${list.get(0).title}">暂无标题</p>
+
+                    </div>
+                    <div class="tipclass">
+                        <span class="agentNo" th:text="${list.get(0).agents.size()}">0</span>
+                        <span>人代理 &nbsp;&nbsp;代理价格</span>
+                        <span class="ooffer" th:text="${list.get(0).agentPrice}">0</span>元
+                    </div>
+                    <div>
+                        <button th:onclick="'javascript:showDetial('+${list.get(0).id}+');'">代理详情</button>
+                    </div>
+                </div>
+            </td>
+
+            <td  width="30%" >
+                <div th:if="${list.size()>=2}" th:onclick="'javascript:showDetial('+${list.get(1).id}+');'" class="goodshow">
+                    <img th:src="@{/common/showPic(filePath=${list.get(1).imageUrl_1})}"/>
+                    <div class="good_title">
+                        <p th:text="${list.get(1).title}">暂无标题</p>
+
+                    </div>
+                    <div class="tipclass">
+                        <span class="agentNo"  th:text="${list.get(1).agents.size()}">0</span>
+                        <span>人代理 &nbsp;&nbsp;代理价格</span>
+                        <span class="ooffer" th:text="${list.get(1).agentPrice}">>0</span>元
+                    </div>
+                    <div>
+                        <button th:onclick="'javascript:showDetial('+${list.get(1).id}+');'">代理详情</button>
+                    </div>
+                </div>
+            </td>
+
+            <td  width="30%">
+                <div th:if="${list.size()==3}" th:onclick="'javascript:showDetial('+${list.get(2).id}+');'" class="goodshow">
+                    <img th:src="@{/common/showPic(filePath=${list.get(2).imageUrl_1})}"/>
+                    <div class="good_title">
+                        <p th:text="${list.get(2).title}">暂无标题</p>
+
+                    </div>
+                    <div class="tipclass">
+                        <span class="agentNo"  th:text="${list.get(1).agents.size()}">0</span>
+                        <span>人代理 &nbsp;&nbsp;代理价格</span>
+                        <span class="ooffer" th:text="${list.get(2).agentPrice}">0</span>元
+                    </div>
+                    <div>
+                        <button th:onclick="'javascript:showDetial('+${list.get(2).id}+');'">代理详情</button>
+                    </div>
+                </div>
+            </td>
+            <td  width="5%"></td>
+        </tr>
+
+
+    </table>
+
+</div>
+
+
+</body>
+<div th:include="util/common_js"></div>
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 5000,//可选选项，自动滑动
+        pagination : '.swiper-pagination',
+        paginationClickable :true,
+        //  effect : 'coverflow',
+        //	slidesPerView: 3,
+        //	centeredSlides: true,
+    })
+
+    function showDetial(saleGoodsId) {
+        alert(saleGoodsId);
+        window.location.href="/saleGoods/goodsDetail/"+saleGoodsId;
+    }
+    /*]]>*/
+</script>
+</html>

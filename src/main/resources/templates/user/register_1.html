@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title></title>
+		<div th:include="util/common_js"></div>
+		<div th:include="util/common_css"></div>
+		<script type="application/javascript">
+			$(function(){
+				$(".selicon").hover(function(){
+					$(this).addClass("seliconmove");
+				});
+				$(".selicon").mouseleave(function(){
+					$(this).removeClass("seliconmove");
+					$(this).addClass("selicon");
+				});
+			});
+		</script>
+	</head>
+	<body style="background: #D0D1D5;">
+		
+		<header class="header">
+			<img src="../../static/images/titlebanner.jpg" />
+		</header>
+		
+		<div class="selectdiv">
+			<div class="selectdiv_title">
+				平台会员注册
+			</div> 
+			
+			<div>
+				<div align="center">选择注册类型</div>
+				<div onclick="agentReg('01')" class="selicon">
+					<div class="iconimage">
+						<img src="../../static/images/dailiicon.png" />
+						<div>注册代理商</div>
+					</div>
+					<br/>
+					<div class="contentdes">
+						<p>注册为代理商产地直供货源,成本价格代理，专业客服负责质量问题，代理无忧</p>
+					</div>
+				</div>
+				
+				<div class="selicon">
+					<div class="iconimage">
+						<img src="../../static/images/gonghuoicon.png" />
+						<div>注册供货商</div>
+					</div>
+					<br/>
+					<div class="contentdes">
+						<p>注册为代理商产地直供货源,成本价格代理，专业客服负责质量问题，代理无忧</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+	</body>
+
+	<script type="text/javascript" th:inline="javascript">
+		/*<![CDATA[*/
+            function agentReg(type) {
+				window.location.href="/user/register2/"+type;
+            }
+		/*]]>*/
+	</script>
+</html>

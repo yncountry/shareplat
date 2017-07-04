@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title></title>
+		<div th:include="util/common_js"></div>
+		<div th:include="util/common_css"></div>
+	</head>
+	<body style="background: #D0D1D5;">
+		<header class="header">
+			<img src="../../static/images/titlebanner.jpg" />
+		</header>
+		
+		<div class="selectdiv">
+			
+			<div class="regpanel">
+			
+					<fieldset>
+						<form id="pageForm" method="post">
+						<input name="type" type="hidden" th:value="${type}" />
+						<legend>用户注册</legend>
+						<div>
+						<label>电话号码:</label>
+					    <input name="phoneNo" placeholder="手机号码" />
+						</div>
+						<div>
+						<label>登录密码:</label>
+					    <input name="password" placeholder="登录密码" />
+						</div>
+						<div>
+						<label>确认密码:</label>
+					    <input name="confirmPass" placeholder="确认密码" />
+						</div>
+						<div>
+						<label>验 证  &nbsp;码:</label>
+					    <input placeholder="短信验证码" style="width: 40%;" />
+					    <button style="height: 40px;font-size: 16px;">获取验证码</button>
+						</div>
+						<button onclick="register()" class="loginButton" style="width: 60%;margin-left: 14%;">
+							注册
+						</button>
+						</form>
+					</fieldset>
+					
+			 </div>
+			 <div class="loginpanel">
+				<div class="qrcode">
+					<img src="../../static/images/qrcode.png" />
+					<div align="center">
+						有疑问扫码咨询官方客服
+					</div>
+				</div>
+				<div class="loginInfo">
+					<a href="index.html">已有账号马上登录</a>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript" th:inline="javascript">
+		/*<![CDATA[*/
+        function register() {
+			var data =$("#pageForm").serialize();
+			var url ="/user/register";
+            var retData = fromSubmit(data,url);
+            handReturnDataRels(retData);
+        }
+		/*]]>*/
+	</script>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html id="child-html" lang="en"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shiro="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8"/>
+		<title>商品详情</title>
+		<div th:include="util/common_css"></div>
+	</head>
+	<body>
+
+	  <div th:include="util/top"></div>
+	  <div th:include="util/nbheader"></div>
+		
+		<div style="height: 540px;" class="goodDetial">
+			<div class="goodtype">
+				<span>水果生鲜>>昭通冰糖心丑苹果</span>
+			</div>
+			<table border="0px" height="540px" cellpadding="10px"  cellspacing="0px" width="90%">
+				<tr>
+					<td style="border: 1px solid  #E8E8E8; border-right: 0px;" width="30%">
+					   <div class="shwoPic">
+						<img class="showShowImage" th:src="@{/common/showPic(filePath=${form.imageUrl_1})}" />
+						<div class="goodsShwoList">
+							<img th:src="@{/common/showPic(filePath=${form.imageUrl_1})}" />
+							<img th:src="@{/common/showPic(filePath=${form.imageUrl_2})}" />
+							<img th:src="@{/common/showPic(filePath=${form.imageUrl_3})}" />
+						</div>
+					  </div>
+					</td>
+					
+					<td style="border: 1px solid  #E8E8E8; border-left: 0px;background: #FBFBFB;" width="40%">
+						<div class="showTitleInfo">
+						<p th:text="${form.title}">
+							暂无标题
+						</p>
+						<div class="showpander">
+							<div class="pricdiv">代理价格：￥30</div>
+						</div>
+						<div class="detialLable">
+							<div>1、推广销售1件获得5元分红</div>	
+							<div>2、代理销售自由定价推广获得超出出货价全部利润</div>
+							<div>3、代理超过20件获得9折代理优惠</div>		
+						</div>
+						
+						<div class="agenbutton">
+							<button>一件代理</button>
+							<button>推广分红</button>
+						</div>
+					</div>
+					</td>
+					
+					<td style="border: 0px;background: #FFFFFF;" width="20%">
+						<div class="goodTage">
+							
+							<img src="../../static/images/main/goodtag.png" />
+						</div>
+						
+						<div class="goodtrade">
+							<div>
+								<span>品牌:</span>
+								<span>冰糖心丑苹果</span>
+							</div>
+							<div>
+								<span>产地:</span>
+								<span>中国云南昭通洒渔</span>
+							</div>
+							<div>
+								<span>重量:</span>
+								<span>5KG</span>
+							</div>
+							<div>
+								<span>包装:</span>
+								<span>纸质包装</span>
+							</div>
+						</div>
+						<div class="progressdiv">
+							<div>
+								<span>代销人气:</span>
+								<span>80%</span>
+							</div>
+							<progress value="0.8"></progress>
+							<div>
+								<div class="agenInfo_tip">
+									<span>已有代理:</span>
+									<span style="color: red;font-size: 28px;">8908</span>
+									<span>人</span>
+								</div>
+								<div class="agenInfo_tip">
+									<span>已经分红:</span>
+									<span style="color: red;font-size: 28px;">￥99990</span>
+									<span>元</span>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<input type="hidden" id="detail_input" th:value="${form.detail}"/>
+		    <div style="padding-left: 8%;width: 100%" id="div_detail">
+
+
+		    </div>
+		</div>
+		
+		
+		<div>
+			
+		</div>
+
+	</body>
+	<div th:include="util/common_js"></div>
+	<script type="text/javascript" th:inline="javascript">
+		/*<![CDATA[*/
+          $("#div_detail").html($("#detail_input").val());
+		/*]]>*/
+	</script>
+</html>
